@@ -1,0 +1,10 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Claude Code local dev tooling (preview server + launch config).
+# Not needed by the static site or GitHub Pages. Remove this line if
+# you'd rather keep the local preview setup in the repo.
+.claude/
