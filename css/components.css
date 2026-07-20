@@ -58,14 +58,14 @@
   font-size: 1.15rem;
 }
 
-.nav-logo-mark {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.25rem 0.45rem;
-  border-radius: var(--radius-sm);
-  background: var(--gradient);
-  color: #0b1020;
+/* The constellation mark (same motif as the favicon) */
+.nav-logo-glyph {
+  flex-shrink: 0;
+  transition: transform 0.45s var(--ease);
+}
+
+.nav-logo:hover .nav-logo-glyph {
+  transform: rotate(-14deg) scale(1.08);
 }
 
 .nav-menu {

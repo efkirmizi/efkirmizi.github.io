@@ -1,10 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- "Query constellation" mark: a cyan query node retrieving its
+       two nearest neighbors — the site's retrieval-field motif. -->
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="lb" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0" stop-color="#6d8dff"/>
-      <stop offset="1" stop-color="#a06bff"/>
+      <stop offset="1" stop-color="#4cc9f0"/>
+    </linearGradient>
+    <linearGradient id="lp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a06bff"/>
+      <stop offset="1" stop-color="#4cc9f0"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="url(#g)"/>
-  <text x="32" y="43" font-family="'JetBrains Mono','Cascadia Code',monospace" font-size="26" font-weight="600" fill="#0b1020" text-anchor="middle">efk</text>
+  <rect width="64" height="64" rx="14" fill="#0a0f26"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="rgba(109,141,255,0.4)" stroke-width="2"/>
+  <!-- links -->
+  <path d="M43 40 18 45" stroke="url(#lb)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M43 40 33 18" stroke="url(#lp)" stroke-width="3" stroke-linecap="round"/>
+  <!-- neighbor nodes -->
+  <circle cx="18" cy="45" r="6" fill="#6d8dff"/>
+  <circle cx="33" cy="18" r="5.5" fill="#a06bff"/>
+  <!-- faint far node, unretrieved -->
+  <circle cx="51" cy="15" r="3" fill="rgba(109,141,255,0.45)"/>
+  <!-- query node with ring -->
+  <circle cx="43" cy="40" r="6.5" fill="#4cc9f0"/>
+  <circle cx="43" cy="40" r="11" fill="none" stroke="rgba(76,201,240,0.55)" stroke-width="2.5"/>
 </svg>

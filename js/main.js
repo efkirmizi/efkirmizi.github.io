@@ -30,7 +30,8 @@ import { initNav } from "./modules/nav.js";
 import { initScrollProgress, initReveal, initBackToTop } from "./modules/scroll.js";
 import { initProjectFilters } from "./modules/filter.js";
 import { initSpotlight } from "./modules/spotlight.js";
-import { initHeroFX } from "./modules/herofx.js";
+import { initDataField } from "./modules/datafield.js";
+import { initOrbPhysics } from "./modules/orbs.js";
 
 /* ---------- Render dynamic sections ---------- */
 renderSkills(document.getElementById("skills-grid"), skills);
@@ -62,7 +63,8 @@ initProjectFilters(
   renderProjects
 );
 initSpotlight();
-initHeroFX();
+initDataField();
+initOrbPhysics();
 initReveal(); // must run AFTER rendering so new .reveal nodes are observed
 
 /* ---------- Footer year ---------- */

@@ -54,6 +54,10 @@
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
+  <!-- Site-wide interactive constellation, fixed behind all content
+       (see js/modules/datafield.js) -->
+  <canvas id="data-field" class="data-field" aria-hidden="true"></canvas>
+
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Reading progress indicator -->
@@ -63,7 +67,14 @@
   <header class="site-nav" id="site-nav">
     <nav class="container nav-inner" aria-label="Main navigation">
       <a class="nav-logo" href="#home" aria-label="Home">
-        <span class="nav-logo-mark" aria-hidden="true">efk</span>
+        <svg class="nav-logo-glyph" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+          <path d="M43 40 18 45M43 40 33 18" stroke="#6d8dff" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="18" cy="45" r="6.5" fill="#6d8dff"/>
+          <circle cx="33" cy="18" r="6" fill="#a06bff"/>
+          <circle cx="51" cy="15" r="3.5" fill="rgba(109,141,255,0.45)"/>
+          <circle cx="43" cy="40" r="7" fill="#4cc9f0"/>
+          <circle cx="43" cy="40" r="12" fill="none" stroke="rgba(76,201,240,0.55)" stroke-width="3"/>
+        </svg>
         <span class="nav-logo-text">efkirmizi<span class="accent">.dev</span></span>
       </a>
 
@@ -90,13 +101,12 @@
   <main id="main">
     <!-- ===================== HERO ===================== -->
     <section class="hero" id="home">
-      <!-- Decorative background: gradient orbs + grid + interactive
-           "retrieval field" canvas (see js/modules/herofx.js) -->
+      <!-- Decorative background: gradient orbs (spring physics via
+           js/modules/orbs.js) + engineering grid -->
       <div class="hero-bg" aria-hidden="true">
         <div class="orb orb-blue"></div>
         <div class="orb orb-purple"></div>
         <div class="hero-grid"></div>
-        <canvas id="hero-field" class="hero-field"></canvas>
       </div>
 
       <div class="container hero-inner">

@@ -28,7 +28,9 @@ export const config = {
    level: 0–100, drives the proficiency bar width.
    abbr:  2–3 chars shown when no icon is available.
    icon:  brand slug from js/modules/brandicons.js, or a key into
-          the stroke icon library in render.js (custom glyphs). */
+          the stroke icon library in render.js (custom glyphs).
+   also:  the long tail — every other tool used across the
+          projects, rendered as a compact chip row (no bars). */
 export const skills = [
   {
     category: "Programming Languages",
@@ -39,6 +41,7 @@ export const skills = [
       { name: "C++", abbr: "C++", icon: "cplusplus", level: 78 },
       { name: "TypeScript", abbr: "TS", icon: "typescript", level: 70 },
     ],
+    also: ["JavaScript (ES modules)", "HTML / CSS", "Pygame"],
   },
   {
     category: "AI / ML Frameworks",
@@ -50,6 +53,7 @@ export const skills = [
       { name: "Hugging Face", abbr: "HF", icon: "huggingface", level: 82 },
       { name: "OpenCV", abbr: "Cv2", icon: "opencv", level: 82 },
     ],
+    also: ["Transformers (ViT)", "SAM 2", "CLIP", "sentence-transformers", "FaceNet / MTCNN", "TensorLy", "CUDA", "DDP + AMP"],
   },
   {
     category: "ML Specializations",
@@ -60,6 +64,7 @@ export const skills = [
       { name: "Model Compression & Distillation", abbr: "MC", icon: "compress", level: 86 },
       { name: "Vector Search", abbr: "VS", icon: "vector", level: 83 },
     ],
+    also: ["Knowledge Distillation", "Tensor Decomposition", "Gemini API", "Google Speech-to-Text", "Tesseract OCR", "t-SNE / PCA explainability"],
   },
   {
     category: "Data Engineering",
@@ -71,6 +76,7 @@ export const skills = [
       { name: "Hadoop", abbr: "Hd", icon: "apachehadoop", level: 74 },
       { name: "Pandas / NumPy", abbr: "Pd", icon: "pandas", level: 90 },
     ],
+    also: ["Nessie (Write-Audit-Publish)", "MinIO", "Google Cloud Dataproc", "GeoJSON / geospatial"],
   },
   {
     category: "Databases & Storage",
@@ -81,6 +87,7 @@ export const skills = [
       { name: "ClickHouse", abbr: "CH", icon: "clickhouse", level: 72 },
       { name: "ChromaDB", abbr: "Ch", icon: "chroma", level: 80 },
     ],
+    also: ["pgvector (HNSW)", "SQLAlchemy 2.0", "SQLModel", "Alembic", "SQLite"],
   },
   {
     category: "Backend & DevOps",
@@ -92,6 +99,7 @@ export const skills = [
       { name: "Docker", abbr: "Dk", icon: "docker", level: 82 },
       { name: "Git", abbr: "Git", icon: "git", level: 90 },
     ],
+    also: ["OAuth2 / JWT", "OpenFGA", "pytest", "OpenAPI / Swagger", "Nginx", "Vite", "Tailwind CSS", "marshmallow"],
   },
 ];
 

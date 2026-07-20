@@ -23,7 +23,8 @@ PersonalWebsite/
 │       ├── brandicons.js   # Inline brand logos (Simple Icons, CC0) for skills
 │       ├── filter.js       # Tag filter chips for the projects grid
 │       ├── spotlight.js    # Cursor-tracking glow on cards
-│       ├── herofx.js       # Hero background: retrieval field + orb physics
+│       ├── datafield.js    # Site-wide constellation background (canvas)
+│       ├── orbs.js         # Spring physics for the hero's gradient orbs
 │       ├── typed.js        # Hero typing effect
 │       ├── nav.js          # Sticky nav, hamburger, active-link highlighting
 │       └── scroll.js       # Progress bar, reveal-on-scroll, back-to-top
@@ -121,14 +122,21 @@ After deploying, update the `canonical`, `og:url`, and JSON-LD URLs in
 - **Tag filtering without a framework** — filter chips are derived from the
   `tags` already present in `data.js` (`js/modules/filter.js`); selecting one
   re-renders the grid and replays the stagger animation.
-- **The hero background is a k-NN search** — `js/modules/herofx.js` draws a
-  canvas of drifting "embedding" points clustered by color; the cursor acts
-  as a query vector, and the k nearest points within range light up and link
-  to it, ranked by distance. The gradient orbs get a lazy spring that leans
-  them away from the pointer. One shared rAF loop, paused via
-  IntersectionObserver when the hero scrolls away and when the tab is
-  hidden; the whole effect never initializes on touch devices or under
-  `prefers-reduced-motion` (those get the original static hero).
+- **The background is a living data constellation** — `js/modules/datafield.js`
+  draws a fixed full-viewport canvas behind every section: drifting points
+  with depth (deeper points are smaller, slower, and parallax less while
+  scrolling), linked into a faint web. Data packets periodically travel
+  along links and pulse the receiving node; the cursor acts as a query
+  vector whose k nearest points light up and link to it ranked by distance;
+  clicking sends a ripple through every node it reaches. Alt sections and
+  the footer use translucent backgrounds so the field stays visible,
+  dimmed, behind them. The hero's gradient orbs get their own spring
+  physics (`js/modules/orbs.js`). Both effects never initialize on touch
+  devices or under `prefers-reduced-motion`, and pause when the tab is
+  hidden.
+- **The site mark is the same metaphor** — the favicon and nav glyph are a
+  "query constellation": a ringed cyan query node retrieving its two
+  nearest neighbors.
 - **IntersectionObserver for everything scroll-related** — reveal animations,
   skill-bar fills, and nav highlighting all use observers instead of scroll
   handlers, so the main thread stays idle while scrolling. The progress bar

@@ -100,6 +100,14 @@ export function renderSkills(mount, skills) {
             )
             .join("")}
         </ul>
+        ${
+          cat.also?.length
+            ? `<div class="skill-extras">
+                 <span class="skill-extras-label mono">also</span>
+                 ${cat.also.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}
+               </div>`
+            : ""
+        }
       </article>`
     )
     .join("");

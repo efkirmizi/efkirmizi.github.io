@@ -72,6 +72,24 @@ body {
   overflow-x: hidden;
 }
 
+/* Site-wide interactive constellation (js/modules/datafield.js):
+   fixed behind all content, above the body background. Hidden
+   wherever the effect never initializes so no dead canvas sits
+   in the page. */
+.data-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .data-field {
+    display: none;
+  }
+}
+
 img,
 svg {
   display: block;
@@ -148,11 +166,12 @@ strong {
   padding: clamp(4.5rem, 9vw, 7.5rem) 0;
 }
 
-/* Alternate band to give the page rhythm */
+/* Alternate band to give the page rhythm. Translucent so the
+   fixed constellation canvas stays visible (dimmed) behind it. */
 .section-alt {
   background:
     radial-gradient(60% 80% at 80% 10%, rgba(160, 107, 255, 0.05), transparent 60%),
-    var(--bg-alt);
+    rgba(9, 12, 26, 0.72);
 }
 
 .section-head {
