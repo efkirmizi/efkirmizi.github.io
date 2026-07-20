@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1130"/><stop offset="1" stop-color="#141243"/>
+    </linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0v26" fill="none" stroke="rgba(148,163,216,0.08)"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="rgba(109,141,255,0.15)"/><stop offset="1" stop-color="rgba(109,141,255,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="330" fill="url(#bg)"/>
+  <rect width="800" height="330" fill="url(#grid)"/>
+  <rect width="800" height="330" fill="url(#glow)"/>
+
+  <!-- semantic search bar -->
+  <rect x="170" y="62" width="460" height="56" rx="28" stroke="#6d8dff" stroke-width="2.8" fill="rgba(109,141,255,0.07)"/>
+  <g stroke="#6d8dff" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <circle cx="208" cy="90" r="11"/>
+    <path d="m216 98 9 9"/>
+  </g>
+  <!-- spoken query waveform -->
+  <g stroke="rgba(148,163,216,0.65)" stroke-width="2.5" stroke-linecap="round">
+    <path d="M258 90h0.01M276 82v16M294 76v28M312 82v16M330 87v6M348 80v20M366 86v8"/>
+  </g>
+  <!-- AI sparkle -->
+  <g stroke="#4cc9f0" stroke-width="2.5" stroke-linecap="round">
+    <path d="M588 78v24M576 90h24"/>
+    <path d="M600 72l-6 6M570 102l6-6" opacity="0.6"/>
+  </g>
+
+  <!-- embedding space: query lands nearest the matching product -->
+  <g stroke="rgba(76,201,240,0.7)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="2 8">
+    <path d="M400 122c0 24-14 40-38 56"/>
+    <path d="M400 122c30 26 96 20 142 50"/>
+    <path d="M400 122c-64 30-136 24-176 54"/>
+  </g>
+  <g fill="#4cc9f0">
+    <circle cx="400" cy="128" r="4.5"/>
+  </g>
+
+  <!-- product cards; the semantic match glows -->
+  <g stroke-linejoin="round">
+    <rect x="150" y="186" width="140" height="96" rx="10" stroke="rgba(109,141,255,0.5)" stroke-width="2.5" fill="rgba(109,141,255,0.05)"/>
+    <rect x="330" y="186" width="140" height="96" rx="10" stroke="#a06bff" stroke-width="3" fill="rgba(160,107,255,0.12)"/>
+    <rect x="510" y="186" width="140" height="96" rx="10" stroke="rgba(109,141,255,0.5)" stroke-width="2.5" fill="rgba(109,141,255,0.05)"/>
+  </g>
+  <g stroke="rgba(148,163,216,0.55)" stroke-width="2.5" stroke-linecap="round">
+    <path d="M166 210h72M166 228h52M346 210h72M346 228h52M526 210h72M526 228h52"/>
+  </g>
+  <!-- price ticks + sentiment stars on the match -->
+  <g stroke="rgba(148,163,216,0.7)" stroke-width="2.5" stroke-linecap="round">
+    <path d="M166 262h34M526 262h34"/>
+  </g>
+  <g fill="#e8c55a">
+    <circle cx="352" cy="262" r="3.5"/><circle cx="368" cy="262" r="3.5"/><circle cx="384" cy="262" r="3.5"/><circle cx="400" cy="262" r="3.5"/>
+  </g>
+  <circle cx="416" cy="262" r="3.5" fill="rgba(232,197,90,0.35)"/>
+</svg>

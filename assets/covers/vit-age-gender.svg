@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0e2c"/><stop offset="1" stop-color="#171242"/>
+    </linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0v26" fill="none" stroke="rgba(148,163,216,0.08)"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.38" cy="0.5" r="0.7">
+      <stop offset="0" stop-color="rgba(109,141,255,0.14)"/><stop offset="1" stop-color="rgba(109,141,255,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="330" fill="url(#bg)"/>
+  <rect width="800" height="330" fill="url(#grid)"/>
+  <rect width="800" height="330" fill="url(#glow)"/>
+
+  <!-- input image cut into ViT patches -->
+  <rect x="180" y="61" width="208" height="208" rx="10" stroke="#6d8dff" stroke-width="2.8" fill="rgba(109,141,255,0.05)"/>
+  <g stroke="rgba(109,141,255,0.35)" stroke-width="1.5">
+    <path d="M232 61v208M284 61v208M336 61v208"/>
+    <path d="M180 113h208M180 165h208M180 217h208"/>
+  </g>
+  <!-- face -->
+  <g stroke="#4cc9f0" stroke-width="2.8" fill="none" stroke-linecap="round">
+    <circle cx="284" cy="150" r="52"/>
+    <path d="M224 269c10-38 34-56 60-56s50 18 60 56" />
+  </g>
+  <!-- attended patches -->
+  <rect x="232" y="113" width="52" height="52" fill="rgba(76,201,240,0.13)"/>
+  <rect x="284" y="113" width="52" height="52" fill="rgba(76,201,240,0.20)"/>
+  <rect x="284" y="165" width="52" height="52" fill="rgba(76,201,240,0.10)"/>
+
+  <!-- shared trunk -->
+  <g stroke="rgba(148,163,216,0.6)" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M388 165h70"/>
+  </g>
+  <rect x="458" y="135" width="56" height="60" rx="10" stroke="#a06bff" stroke-width="2.8" fill="rgba(160,107,255,0.09)"/>
+  <g stroke="rgba(160,107,255,0.75)" stroke-width="2.2" stroke-linecap="round">
+    <path d="M470 151h32M470 165h32M470 179h32"/>
+  </g>
+
+  <!-- two heads -->
+  <g stroke="rgba(148,163,216,0.55)" stroke-width="2.2" fill="none" stroke-linecap="round">
+    <path d="M514 150c34-14 52-32 78-40"/>
+    <path d="M514 180c34 14 52 32 78 40"/>
+  </g>
+  <!-- age head: regression curve -->
+  <rect x="596" y="66" width="150" height="84" rx="10" stroke="#4cc9f0" stroke-width="2.6" fill="rgba(76,201,240,0.05)"/>
+  <path d="M612 130c22-4 34-26 50-34s40-6 66-22" stroke="#4cc9f0" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+  <g fill="#4cc9f0">
+    <circle cx="640" cy="116" r="3.5"/><circle cx="676" cy="94" r="3.5"/><circle cx="712" cy="82" r="3.5"/>
+  </g>
+  <!-- gender head: two-class logits -->
+  <rect x="596" y="180" width="150" height="84" rx="10" stroke="#a06bff" stroke-width="2.6" fill="rgba(160,107,255,0.05)"/>
+  <g stroke-linecap="round">
+    <path d="M628 244v-38" stroke="#a06bff" stroke-width="12"/>
+    <path d="M660 244v-16" stroke="rgba(160,107,255,0.45)" stroke-width="12"/>
+  </g>
+  <path d="M612 244h118" stroke="rgba(148,163,216,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

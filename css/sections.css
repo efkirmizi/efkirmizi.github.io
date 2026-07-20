@@ -404,6 +404,29 @@
   transform: scale(1.15) rotate(-4deg);
 }
 
+/* Cover artwork (SVG illustrations in assets/covers/) draws its own
+   grid, so hide the generic overlay and let the art fill the frame. */
+.project-cover.has-image::after {
+  display: none;
+}
+
+.project-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.project-card:hover .project-cover img {
+  transform: scale(1.045);
+}
+
+.projects-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.6rem;
+}
+
 .project-body {
   display: flex;
   flex-direction: column;

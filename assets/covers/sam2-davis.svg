@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0f2a"/><stop offset="1" stop-color="#161240"/>
+    </linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0v26" fill="none" stroke="rgba(148,163,216,0.08)"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.7">
+      <stop offset="0" stop-color="rgba(76,201,240,0.13)"/><stop offset="1" stop-color="rgba(76,201,240,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="330" fill="url(#bg)"/>
+  <rect width="800" height="330" fill="url(#grid)"/>
+  <rect width="800" height="330" fill="url(#glow)"/>
+
+  <!-- video frame stack -->
+  <rect x="286" y="52" width="300" height="180" rx="12" stroke="rgba(109,141,255,0.30)" stroke-width="2.5" fill="rgba(109,141,255,0.04)"/>
+  <rect x="268" y="66" width="300" height="180" rx="12" stroke="rgba(109,141,255,0.55)" stroke-width="2.5" fill="rgba(10,15,42,0.85)"/>
+  <rect x="250" y="80" width="300" height="180" rx="12" stroke="#6d8dff" stroke-width="2.8" fill="rgba(10,15,42,0.92)"/>
+
+  <!-- segmented object: mask + contour -->
+  <path d="M352 214c-30-8-42-38-25-60 15-20 46-27 69-15 23 12 31 42 15 60-15 17-40 21-59 15z"
+        stroke="#4cc9f0" stroke-width="3" fill="rgba(76,201,240,0.16)" stroke-linejoin="round"/>
+  <!-- box prompt -->
+  <rect x="312" y="126" width="126" height="100" rx="6" stroke="#a06bff" stroke-width="2.2" fill="none" stroke-dasharray="7 7"/>
+  <circle cx="312" cy="126" r="4" fill="#a06bff"/><circle cx="438" cy="226" r="4" fill="#a06bff"/>
+
+  <!-- memory attention arrows from earlier frames -->
+  <g stroke="rgba(160,107,255,0.6)" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="2 7">
+    <path d="M568 96c26 24 26 66 4 92"/>
+    <path d="M586 82c40 34 40 96 6 132"/>
+  </g>
+
+  <!-- timeline with propagation progress -->
+  <g stroke-linecap="round">
+    <path d="M250 292h300" stroke="rgba(148,163,216,0.35)" stroke-width="4"/>
+    <path d="M250 292h186" stroke="#4cc9f0" stroke-width="4"/>
+  </g>
+  <circle cx="436" cy="292" r="8" fill="#0a0f2a" stroke="#4cc9f0" stroke-width="3"/>
+  <!-- frame ticks -->
+  <g stroke="rgba(148,163,216,0.45)" stroke-width="2">
+    <path d="M300 286v12M350 286v12M400 286v12M450 286v12M500 286v12"/>
+  </g>
+</svg>

@@ -106,7 +106,7 @@
           </p>
           <p class="hero-lead">
             AI &amp; Data Engineering graduate who builds intelligent systems end to end —
-            from streaming data pipelines and production ML models to the APIs that serve them.
+            from data lakehouses and production ML models to the RAG systems and APIs that serve them.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">View Projects</a>
@@ -139,11 +139,12 @@
               <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
               <span class="terminal-title mono">enis@portfolio: ~</span>
             </div>
-            <pre class="terminal-body mono"><code><span class="t-prompt">$</span> <span class="t-cmd">python train.py --model vision-qc</span>
-<span class="t-dim">Loading dataset........... done</span>
-<span class="t-dim">Epoch 12/12  loss=0.041  acc=0.983</span>
-<span class="t-ok">✓ model saved to registry</span>
-<span class="t-prompt">$</span> <span class="t-cmd">docker compose up -d api</span>
+            <pre class="terminal-body mono"><code><span class="t-prompt">$</span> <span class="t-cmd">python distill.py --teacher resnet34</span>
+<span class="t-dim">Epoch 12/12  loss=0.041  top1=0.968</span>
+<span class="t-ok">✓ 13.7× smaller student saved</span>
+<span class="t-prompt">$</span> <span class="t-cmd">spark-submit etl.py --layer gold</span>
+<span class="t-ok">✓ iceberg table published · 10 ms reads</span>
+<span class="t-prompt">$</span> <span class="t-cmd">docker compose up -d rag-api</span>
 <span class="t-ok">✓ fastapi serving on :8000</span>
 <span class="t-prompt">$</span> <span class="t-cursor">▊</span></code></pre>
           </div>
@@ -195,9 +196,9 @@
                 <li><span class="mono accent">▸</span> Open to ML / Data / Backend roles</li>
               </ul>
               <div class="about-stats">
-                <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Projects built</span></div>
+                <div class="stat"><span class="stat-num">12+</span><span class="stat-label">Projects built</span></div>
                 <div class="stat"><span class="stat-num">2</span><span class="stat-label">Internships</span></div>
-                <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Technologies</span></div>
+                <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Technologies</span></div>
               </div>
             </div>
           </aside>
@@ -226,8 +227,19 @@
           <h2 class="section-title">Projects</h2>
           <p class="section-sub">A selection of things I&rsquo;ve designed, trained, and shipped.</p>
         </header>
+
+        <!-- Filter chips, derived from project tags (see js/modules/filter.js) -->
+        <div class="project-filters reveal" id="project-filters" role="group" aria-label="Filter projects by area"></div>
+
         <!-- Populated from js/data.js by render.js -->
         <div class="projects-grid" id="projects-grid"></div>
+
+        <div class="projects-more reveal">
+          <a class="btn btn-outline" href="https://github.com/efkirmizi?tab=repositories" target="_blank" rel="noopener noreferrer">
+            See all repositories on GitHub
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M21 3l-9 9M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 

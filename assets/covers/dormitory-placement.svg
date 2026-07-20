@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1226"/><stop offset="1" stop-color="#0e1838"/>
+    </linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0v26" fill="none" stroke="rgba(148,163,216,0.08)"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.6" cy="0.5" r="0.75">
+      <stop offset="0" stop-color="rgba(76,201,240,0.10)"/><stop offset="1" stop-color="rgba(76,201,240,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="330" fill="url(#bg)"/>
+  <rect width="800" height="330" fill="url(#grid)"/>
+  <rect width="800" height="330" fill="url(#glow)"/>
+
+  <!-- two shores split by the strait -->
+  <path d="M60 40h260c20 24-6 44 12 66s34 18 30 48c-4 26-28 30-30 56s16 44 4 66l-16 24H60z"
+        stroke="rgba(109,141,255,0.6)" stroke-width="2.5" fill="rgba(109,141,255,0.05)" stroke-linejoin="round"/>
+  <path d="M740 40H452c-24 20 4 42-12 62s-38 22-32 50c6 24 30 28 34 52s-12 46-2 68l14 28h286z"
+        stroke="rgba(109,141,255,0.6)" stroke-width="2.5" fill="rgba(109,141,255,0.05)" stroke-linejoin="round"/>
+  <!-- the strait -->
+  <path d="M382 40c22 26-8 46 10 70s36 20 32 48c-4 26-30 32-32 58s18 46 6 70l-12 24"
+        stroke="#4cc9f0" stroke-width="2.5" fill="none" opacity="0.7" stroke-dasharray="10 8"/>
+
+  <!-- district lines -->
+  <g stroke="rgba(148,163,216,0.28)" stroke-width="1.8" fill="none">
+    <path d="M60 150c60-8 120 8 200 0M170 40v100M140 150v130M240 150c10 50-8 90 4 130"/>
+    <path d="M740 130c-70 12-140-6-240 6M600 40v90M660 136v144M540 136c-8 54 10 96 0 144"/>
+  </g>
+
+  <!-- criterion heat cells -->
+  <g>
+    <rect x="90" y="170" width="44" height="44" fill="rgba(160,107,255,0.20)"/>
+    <rect x="170" y="60" width="44" height="44" fill="rgba(160,107,255,0.12)"/>
+    <rect x="480" y="170" width="44" height="44" fill="rgba(160,107,255,0.16)"/>
+    <rect x="620" y="70" width="44" height="44" fill="rgba(160,107,255,0.24)"/>
+    <rect x="600" y="210" width="44" height="44" fill="rgba(160,107,255,0.10)"/>
+  </g>
+
+  <!-- candidate pins -->
+  <g stroke-width="2.6" fill="rgba(109,141,255,0.15)" stroke="#6d8dff" stroke-linejoin="round">
+    <path d="M150 122c0-12 9-20 20-20s20 8 20 20c0 14-20 34-20 34s-20-20-20-34z"/>
+    <path d="M660 152c0-12 9-20 20-20s20 8 20 20c0 14-20 34-20 34s-20-20-20-34z"/>
+  </g>
+  <circle cx="170" cy="122" r="6" fill="#6d8dff"/>
+  <circle cx="680" cy="152" r="6" fill="#6d8dff"/>
+
+  <!-- optimal site -->
+  <g stroke="#4cc9f0" fill="none">
+    <circle cx="520" cy="106" r="30" stroke-width="2" opacity="0.5"/>
+    <circle cx="520" cy="106" r="44" stroke-width="1.6" opacity="0.25"/>
+  </g>
+  <g stroke-width="2.8" fill="rgba(76,201,240,0.2)" stroke="#4cc9f0" stroke-linejoin="round">
+    <path d="M498 96c0-13 10-22 22-22s22 9 22 22c0 16-22 38-22 38s-22-22-22-38z"/>
+  </g>
+  <path d="m520 88 4 8 9 1-6.5 6 1.5 9-8-4.5-8 4.5 1.5-9-6.5-6 9-1z" fill="#4cc9f0"/>
+</svg>

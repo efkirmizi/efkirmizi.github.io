@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0f28"/><stop offset="1" stop-color="#101a40"/>
+    </linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0v26" fill="none" stroke="rgba(148,163,216,0.08)"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.42" cy="0.4" r="0.75">
+      <stop offset="0" stop-color="rgba(109,141,255,0.13)"/><stop offset="1" stop-color="rgba(109,141,255,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="330" fill="url(#bg)"/>
+  <rect width="800" height="330" fill="url(#grid)"/>
+  <rect width="800" height="330" fill="url(#glow)"/>
+
+  <!-- thread: post, replies, nested replies -->
+  <rect x="150" y="56" width="300" height="58" rx="12" stroke="#6d8dff" stroke-width="2.8" fill="rgba(109,141,255,0.08)"/>
+  <g stroke="rgba(148,163,216,0.65)" stroke-width="2.5" stroke-linecap="round">
+    <path d="M172 78h180M172 96h120"/>
+  </g>
+
+  <!-- thread spine elbows -->
+  <g stroke="rgba(148,163,216,0.4)" stroke-width="2" fill="none">
+    <path d="M176 114v56h34"/>
+    <path d="M176 170v70h34"/>
+    <path d="M236 198v56h34"/>
+  </g>
+
+  <rect x="210" y="142" width="260" height="52" rx="12" stroke="#a06bff" stroke-width="2.6" fill="rgba(160,107,255,0.08)"/>
+  <g stroke="rgba(148,163,216,0.6)" stroke-width="2.5" stroke-linecap="round">
+    <path d="M232 162h150M232 178h96"/>
+  </g>
+
+  <rect x="270" y="212" width="230" height="48" rx="12" stroke="#4cc9f0" stroke-width="2.4" fill="rgba(76,201,240,0.07)"/>
+  <g stroke="rgba(148,163,216,0.55)" stroke-width="2.5" stroke-linecap="round">
+    <path d="M292 230h130M292 246h80"/>
+  </g>
+
+  <rect x="210" y="266" width="180" height="40" rx="12" stroke="rgba(109,141,255,0.5)" stroke-width="2.2" fill="rgba(109,141,255,0.05)"/>
+  <path d="M232 286h110" stroke="rgba(148,163,216,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- karma: votes rising off the thread -->
+  <g stroke="#a06bff" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m560 210 14-16 14 16M574 194v44"/>
+    <path d="m620 176 14-16 14 16M634 160v44" opacity="0.75"/>
+    <path d="m594 120 14-16 14 16M608 104v44" opacity="0.5"/>
+  </g>
+
+  <!-- social graph corner -->
+  <g stroke="rgba(109,141,255,0.5)" stroke-width="2">
+    <path d="M614 268l44-22M614 268l46 18"/>
+  </g>
+  <g fill="#0a0f28" stroke="#6d8dff" stroke-width="2.6">
+    <circle cx="608" cy="268" r="12"/>
+    <circle cx="666" cy="242" r="9"/>
+    <circle cx="668" cy="290" r="9"/>
+  </g>
+</svg>

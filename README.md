@@ -13,17 +13,21 @@ PersonalWebsite/
 │   ├── base.css            # Design tokens (CSS variables), reset, typography,
 │   │                       #   layout, scroll-reveal system, reduced-motion
 │   ├── components.css      # Reusable UI: nav, buttons, cards, tags, skill
-│   │                       #   bars, timeline, form, back-to-top, progress bar
+│   │                       #   bars, filter chips, spotlight, form, etc.
 │   └── sections.css        # Per-section layout + responsive breakpoints
 ├── js/
 │   ├── data.js             # ★ ALL content lives here — edit this to customize
 │   ├── main.js             # Entry point: renders sections, wires up behavior
 │   └── modules/
-│       ├── render.js       # data.js → DOM (includes the inline SVG icon set)
+│       ├── render.js       # data.js → DOM (includes the stroke icon set)
+│       ├── brandicons.js   # Inline brand logos (Simple Icons, CC0) for skills
+│       ├── filter.js       # Tag filter chips for the projects grid
+│       ├── spotlight.js    # Cursor-tracking glow on cards
 │       ├── typed.js        # Hero typing effect
 │       ├── nav.js          # Sticky nav, hamburger, active-link highlighting
 │       └── scroll.js       # Progress bar, reveal-on-scroll, back-to-top
 ├── assets/
+│   ├── covers/             # Hand-drawn SVG "blueprint" cover art per project
 │   ├── favicon.svg
 │   └── resume.pdf          # Placeholder — replace with your real resume
 └── README.md
@@ -43,10 +47,15 @@ PersonalWebsite/
 4. **Contact form** — works out of the box via a `mailto:` fallback. For real
    submissions, create a free [Formspree](https://formspree.io) form and paste
    its endpoint into `config.formEndpoint` in `js/data.js`.
-5. **Project screenshots** — each project uses a gradient cover by default.
-   Add an `image: "assets/projects/foo.webp"` field to a project in `data.js`
-   and it swaps in a lazy-loaded `<img>` automatically.
-6. **Theme** — every color, radius, font, and easing is a CSS variable at the
+5. **Project covers** — each project points its `image` field at a hand-drawn
+   SVG illustration in `assets/covers/` (a small "blueprint" of the system).
+   Swap any of them for a real screenshot (`assets/covers/foo.webp` works the
+   same way); remove the `image` field to fall back to the gradient + icon.
+6. **Skill icons** — skill items reference brand logos by slug
+   (`icon: "pytorch"`) from `js/modules/brandicons.js` (Simple Icons path
+   data, CC0). Skills without a logo use a stroke glyph from `render.js`,
+   and anything unresolved falls back to the two-letter `abbr` badge.
+7. **Theme** — every color, radius, font, and easing is a CSS variable at the
    top of [`css/base.css`](css/base.css). Change `--accent` / `--accent-2`
    and the whole site follows.
 
@@ -99,10 +108,18 @@ After deploying, update the `canonical`, `og:url`, and JSON-LD URLs in
   timeline…) render from `data.js` so growing them never means copy-pasting
   markup.
 - **Inline SVG icons instead of an icon font/library** — zero network
-  requests, styleable with `currentColor`, and only the ~20 icons actually
-  used ship to the browser.
-- **Gradient covers instead of stock images** — no fake screenshots, no large
-  image payloads; swap in real screenshots per project when ready.
+  requests, styleable with `currentColor`, and only the icons actually used
+  ship to the browser. Brand logos for skills are inlined the same way from
+  the CC0 Simple Icons set (`js/modules/brandicons.js`), with a few colors
+  lightened so they stay readable on the dark theme.
+- **Blueprint covers instead of stock images** — every project card carries a
+  hand-drawn SVG schematic of that system (medallion layers for the
+  lakehouse, teacher→student funnel for distillation, ACL-gated retrieval for
+  the RAG platform…). No fake screenshots, a few KB each, and they share the
+  site's grid + palette so the grid reads as one system.
+- **Tag filtering without a framework** — filter chips are derived from the
+  `tags` already present in `data.js` (`js/modules/filter.js`); selecting one
+  re-renders the grid and replays the stagger animation.
 - **IntersectionObserver for everything scroll-related** — reveal animations,
   skill-bar fills, and nav highlighting all use observers instead of scroll
   handlers, so the main thread stays idle while scrolling. The progress bar
@@ -120,8 +137,6 @@ After deploying, update the `canonical`, `og:url`, and JSON-LD URLs in
 
 - **Blog / research page** — add `blog.html` reusing `base.css` +
   `components.css`; the nav is plain markup, just add a link.
-- **Project filtering** — projects already carry `tags`; add buttons that
-  filter the array and re-call `renderProjects()`.
 - **AI demos / visualizations** — add a section mount point in `index.html`,
   a data array in `data.js`, and a render function in `render.js` (follow any
   existing section as the pattern).

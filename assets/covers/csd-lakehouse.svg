@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0f26"/><stop offset="1" stop-color="#0e1a38"/>
+    </linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0v26" fill="none" stroke="rgba(148,163,216,0.08)"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.75">
+      <stop offset="0" stop-color="rgba(109,141,255,0.14)"/><stop offset="1" stop-color="rgba(109,141,255,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="330" fill="url(#bg)"/>
+  <rect width="800" height="330" fill="url(#grid)"/>
+  <rect width="800" height="330" fill="url(#glow)"/>
+
+  <!-- source OLTP database -->
+  <g stroke="#6d8dff" stroke-width="2.5" fill="rgba(109,141,255,0.08)" stroke-linecap="round">
+    <ellipse cx="120" cy="110" rx="44" ry="14"/>
+    <path d="M76 110v76c0 8 20 14 44 14s44-6 44-14v-76"/>
+    <path d="M76 148c0 8 20 14 44 14s44-6 44-14" fill="none"/>
+  </g>
+
+  <!-- ingestion flow -->
+  <g stroke="#4cc9f0" stroke-width="2.5" stroke-linecap="round" fill="none">
+    <path d="M180 160c40 30 60 62 96 78" stroke-dasharray="2 8"/>
+    <path d="m266 232 14 4-6-13"/>
+  </g>
+
+  <!-- medallion planes: bronze / silver / gold -->
+  <g stroke-width="3" stroke-linejoin="round">
+    <path d="M290 252l130-30 130 30-130 30z" stroke="#c08a4e" fill="rgba(192,138,78,0.10)"/>
+    <path d="M290 182l130-30 130 30-130 30z" stroke="#9aa5c4" fill="rgba(154,165,196,0.10)"/>
+    <path d="M290 112l130-30 130 30-130 30z" stroke="#e8c55a" fill="rgba(232,197,90,0.10)"/>
+  </g>
+  <!-- lift between layers -->
+  <g stroke="rgba(148,163,216,0.5)" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round">
+    <path d="M420 222v-38M420 152v-38"/>
+  </g>
+
+  <!-- Nessie: branch, audit, publish -->
+  <g stroke="#4cc9f0" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M640 70v190"/>
+    <path d="M640 110c46 10 46 60 0 78"/>
+  </g>
+  <g fill="#0a0f26" stroke="#a06bff" stroke-width="3">
+    <circle cx="640" cy="92" r="8"/>
+    <circle cx="675" cy="149" r="8"/>
+    <circle cx="640" cy="206" r="8"/>
+    <circle cx="640" cy="248" r="8"/>
+  </g>
+  <!-- audit check on the branch -->
+  <path d="m670 145 4 5 8-9" stroke="#4ade80" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

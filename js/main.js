@@ -28,6 +28,8 @@ import {
 import { initTyped } from "./modules/typed.js";
 import { initNav } from "./modules/nav.js";
 import { initScrollProgress, initReveal, initBackToTop } from "./modules/scroll.js";
+import { initProjectFilters } from "./modules/filter.js";
+import { initSpotlight } from "./modules/spotlight.js";
 
 /* ---------- Render dynamic sections ---------- */
 renderSkills(document.getElementById("skills-grid"), skills);
@@ -52,6 +54,13 @@ initNav();
 initScrollProgress();
 initBackToTop();
 initTyped(document.getElementById("typed"), config.typedRoles);
+initProjectFilters(
+  document.getElementById("project-filters"),
+  document.getElementById("projects-grid"),
+  projects,
+  renderProjects
+);
+initSpotlight();
 initReveal(); // must run AFTER rendering so new .reveal nodes are observed
 
 /* ---------- Footer year ---------- */

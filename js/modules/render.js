@@ -4,6 +4,8 @@
    adding a new section later = one data array + one function.
    ============================================================ */
 
+import { brandIcon, hasBrandIcon } from "./brandicons.js";
+
 /* Escape user-editable strings before injecting into innerHTML */
 const esc = (s = "") =>
   s.replace(/[&<>"']/g, (c) =>
@@ -11,7 +13,8 @@ const esc = (s = "") =>
   );
 
 /* ---------- Minimal inline SVG icon library ----------
-   Stroke-based, inherits currentColor, no icon font needed. */
+   Stroke-based, inherits currentColor, no icon font needed.
+   (Brand logos live separately in brandicons.js.) */
 const ICONS = {
   code: '<path d="m8 6-6 6 6 6M16 6l6 6-6 6"/>',
   layers: '<path d="m12 2 10 5.5L12 13 2 7.5 12 2Zm-10 10 10 5.5L22 12M2 16.5 12 22l10-5.5"/>',
@@ -38,10 +41,28 @@ const ICONS = {
   award: '<circle cx="12" cy="9" r="6"/><path d="m8.5 14-2 8 5.5-3 5.5 3-2-8"/>',
   cap: '<path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 9v5"/>',
   cert: '<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 8h10M7 12h6"/><circle cx="17" cy="15" r="2.2"/><path d="m16 17 .8 3.5L17 20l.2.5L18 17"/>',
+  /* Custom glyphs for skills without a brand logo */
+  compress: '<path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>',
+  iceberg: '<path d="M2 13h20"/><path d="m9 13 3-5.5L15 13"/><path d="m6.5 13 5.5 8 5.5-8"/>',
+  chroma: '<path d="M12 2.5 20 7v10l-8 4.5L4 17V7l8-4.5Z"/><circle cx="9.2" cy="10" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/><circle cx="12" cy="14.6" r="1.1"/>',
+  vector: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><circle cx="8.6" cy="9.4" r=".9"/><circle cx="13.4" cy="9" r=".9"/><circle cx="11" cy="13.2" r=".9"/>',
 };
 
 const icon = (name, size = 22) =>
   `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.code}</svg>`;
+
+/* Badge for one skill row: real brand logo when we have one,
+   a tinted stroke glyph for concepts (SQL, CV, RAG…), and the
+   original abbreviation tile as the last resort. */
+const skillBadge = (s) => {
+  if (s.icon && hasBrandIcon(s.icon)) {
+    return `<span class="skill-badge skill-badge--icon" aria-hidden="true">${brandIcon(s.icon, 21)}</span>`;
+  }
+  if (s.icon && ICONS[s.icon]) {
+    return `<span class="skill-badge skill-badge--icon skill-badge--glyph" aria-hidden="true">${icon(s.icon, 20)}</span>`;
+  }
+  return `<span class="skill-badge" aria-hidden="true">${esc(s.abbr)}</span>`;
+};
 
 /* Make a grid animate in with staggered children */
 const stagger = (container) => {
@@ -65,7 +86,7 @@ export function renderSkills(mount, skills) {
             .map(
               (s) => `
             <li class="skill-item">
-              <span class="skill-badge" aria-hidden="true">${esc(s.abbr)}</span>
+              ${skillBadge(s)}
               <div>
                 <div class="skill-meta">
                   <span class="skill-name">${esc(s.name)}</span>
@@ -89,15 +110,16 @@ export function renderSkills(mount, skills) {
 export function renderProjects(mount, projects) {
   mount.innerHTML = projects
     .map((p) => {
-      // If a real screenshot is provided, use it; otherwise draw the
-      // gradient placeholder cover with the project's icon.
+      // Cover art: an SVG illustration per project (decorative — the
+      // title right below carries the information), else the gradient
+      // placeholder with the project's icon.
       const cover = p.image
-        ? `<img src="${esc(p.image)}" alt="${esc(p.title)} screenshot" loading="lazy" width="400" height="165" style="object-fit:cover;height:100%;width:100%">`
+        ? `<img src="${esc(p.image)}" alt="" loading="lazy" decoding="async" width="800" height="330">`
         : icon(p.icon, 52);
 
       return `
       <article class="project-card card">
-        <div class="project-cover" style="--cover:${p.cover}" aria-hidden="${p.image ? "false" : "true"}">
+        <div class="project-cover${p.image ? " has-image" : ""}" style="--cover:${p.cover}" aria-hidden="true">
           ${cover}
         </div>
         <div class="project-body">
