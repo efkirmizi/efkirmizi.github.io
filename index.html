@@ -90,11 +90,13 @@
   <main id="main">
     <!-- ===================== HERO ===================== -->
     <section class="hero" id="home">
-      <!-- Decorative background: gradient orbs + grid, purely visual -->
+      <!-- Decorative background: gradient orbs + grid + interactive
+           "retrieval field" canvas (see js/modules/herofx.js) -->
       <div class="hero-bg" aria-hidden="true">
         <div class="orb orb-blue"></div>
         <div class="orb orb-purple"></div>
         <div class="hero-grid"></div>
+        <canvas id="hero-field" class="hero-field"></canvas>
       </div>
 
       <div class="container hero-inner">

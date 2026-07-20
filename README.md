@@ -23,6 +23,7 @@ PersonalWebsite/
 │       ├── brandicons.js   # Inline brand logos (Simple Icons, CC0) for skills
 │       ├── filter.js       # Tag filter chips for the projects grid
 │       ├── spotlight.js    # Cursor-tracking glow on cards
+│       ├── herofx.js       # Hero background: retrieval field + orb physics
 │       ├── typed.js        # Hero typing effect
 │       ├── nav.js          # Sticky nav, hamburger, active-link highlighting
 │       └── scroll.js       # Progress bar, reveal-on-scroll, back-to-top
@@ -120,6 +121,14 @@ After deploying, update the `canonical`, `og:url`, and JSON-LD URLs in
 - **Tag filtering without a framework** — filter chips are derived from the
   `tags` already present in `data.js` (`js/modules/filter.js`); selecting one
   re-renders the grid and replays the stagger animation.
+- **The hero background is a k-NN search** — `js/modules/herofx.js` draws a
+  canvas of drifting "embedding" points clustered by color; the cursor acts
+  as a query vector, and the k nearest points within range light up and link
+  to it, ranked by distance. The gradient orbs get a lazy spring that leans
+  them away from the pointer. One shared rAF loop, paused via
+  IntersectionObserver when the hero scrolls away and when the tab is
+  hidden; the whole effect never initializes on touch devices or under
+  `prefers-reduced-motion` (those get the original static hero).
 - **IntersectionObserver for everything scroll-related** — reveal animations,
   skill-bar fills, and nav highlighting all use observers instead of scroll
   handlers, so the main thread stays idle while scrolling. The progress bar
