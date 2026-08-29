@@ -27,7 +27,8 @@ PersonalWebsite/
 │       ├── orbs.js         # Spring physics for the hero's gradient orbs
 │       ├── typed.js        # Hero typing effect
 │       ├── nav.js          # Sticky nav, hamburger, active-link highlighting
-│       └── scroll.js       # Progress bar, reveal-on-scroll, back-to-top
+│       ├── scroll.js       # Progress bar, reveal-on-scroll, back-to-top
+│       └── linkedin.js     # Lazy-mounts LinkedIn's profile-badge widget
 ├── assets/
 │   ├── covers/             # Hand-drawn SVG "blueprint" cover art per project
 │   ├── favicon.svg
@@ -45,19 +46,26 @@ PersonalWebsite/
    HTML in [`index.html`](index.html) (kept static for SEO). Search for
    `your-username` and replace with your GitHub/LinkedIn handles; update the
    canonical URL and JSON-LD block in `<head>` too.
-3. **Resume** — drop your real PDF over `assets/resume.pdf`.
-4. **Contact form** — works out of the box via a `mailto:` fallback. For real
+3. **LinkedIn badge** — the card in the contact section wraps LinkedIn's
+   official badge. To point it at a different profile, generate a fresh
+   snippet at [linkedin.com/badges](https://www.linkedin.com/badges) and
+   paste it over the `.LI-profile-badge` div in `index.html` (`data-locale`,
+   `data-size`, `data-theme` and `data-type` are LinkedIn's own knobs).
+   Nothing else needs changing — `js/modules/linkedin.js` finds the badge
+   by class.
+4. **Resume** — drop your real PDF over `assets/resume.pdf`.
+5. **Contact form** — works out of the box via a `mailto:` fallback. For real
    submissions, create a free [Formspree](https://formspree.io) form and paste
    its endpoint into `config.formEndpoint` in `js/data.js`.
-5. **Project covers** — each project points its `image` field at a hand-drawn
+6. **Project covers** — each project points its `image` field at a hand-drawn
    SVG illustration in `assets/covers/` (a small "blueprint" of the system).
    Swap any of them for a real screenshot (`assets/covers/foo.webp` works the
    same way); remove the `image` field to fall back to the gradient + icon.
-6. **Skill icons** — skill items reference brand logos by slug
+7. **Skill icons** — skill items reference brand logos by slug
    (`icon: "pytorch"`) from `js/modules/brandicons.js` (Simple Icons path
    data, CC0). Skills without a logo use a stroke glyph from `render.js`,
    and anything unresolved falls back to the two-letter `abbr` badge.
-7. **Theme** — every color, radius, font, and easing is a CSS variable at the
+8. **Theme** — every color, radius, font, and easing is a CSS variable at the
    top of [`css/base.css`](css/base.css). Change `--accent` / `--accent-2`
    and the whole site follows.
 
@@ -137,6 +145,15 @@ After deploying, update the `canonical`, `og:url`, and JSON-LD URLs in
 - **The site mark is the same metaphor** — the favicon and nav glyph are a
   "query constellation": a ringed cyan query node retrieving its two
   nearest neighbors.
+- **One third-party script, and only on demand** — the LinkedIn profile
+  badge is LinkedIn's own widget, the single piece of external JS on the
+  site. `js/modules/linkedin.js` holds that request back until the badge is
+  about to scroll into view, so it costs nothing on first paint, then
+  watches for the iframe LinkedIn injects. If the widget is blocked,
+  offline, or simply never answers, the plain profile link inside
+  LinkedIn's markup stays as the fallback and the space reserved for the
+  iframe collapses — the card is never a dead rectangle, and the page
+  doesn't shift when the widget lands.
 - **IntersectionObserver for everything scroll-related** — reveal animations,
   skill-bar fills, and nav highlighting all use observers instead of scroll
   handlers, so the main thread stays idle while scrolling. The progress bar

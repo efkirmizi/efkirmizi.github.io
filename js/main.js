@@ -32,6 +32,7 @@ import { initProjectFilters } from "./modules/filter.js";
 import { initSpotlight } from "./modules/spotlight.js";
 import { initDataField } from "./modules/datafield.js";
 import { initOrbPhysics } from "./modules/orbs.js";
+import { initLinkedInBadge } from "./modules/linkedin.js";
 
 /* ---------- Render dynamic sections ---------- */
 renderSkills(document.getElementById("skills-grid"), skills);
@@ -65,6 +66,7 @@ initProjectFilters(
 initSpotlight();
 initDataField();
 initOrbPhysics();
+initLinkedInBadge(document.getElementById("linkedin-badge"));
 initReveal(); // must run AFTER rendering so new .reveal nodes are observed
 
 /* ---------- Footer year ---------- */

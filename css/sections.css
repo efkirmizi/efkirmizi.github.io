@@ -764,6 +764,82 @@ a.contact-line:hover {
   border-color: var(--border);
 }
 
+/* ---- LinkedIn profile badge ----
+   LinkedIn's widget renders itself into an iframe it styles on its
+   own, so this card only supplies the framing around it: a header,
+   the space the iframe will take, and the fallback link that shows
+   until — or unless — the widget arrives (js/modules/linkedin.js). */
+.linkedin-badge {
+  margin-top: 0.6rem;
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.linkedin-badge-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+
+.linkedin-badge-head svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.linkedin-badge .badge-base {
+  display: grid;
+  /* LinkedIn sizes its own iframe, so on a narrow phone it can end up
+     wider than this card: let it scroll inside the card rather than
+     get clipped by the page. "safe" keeps the left edge reachable. */
+  place-items: safe center;
+  overflow-x: auto;
+}
+
+/* Hold the widget's footprint open so an iframe landing mid-scroll
+   doesn't shove the page around. Only reserved while the outcome is
+   unknown — once the iframe is in (or once we know it never will be)
+   the real content sets the height and no dead space is left over. */
+.js .linkedin-badge:not(.is-loaded):not(.is-unavailable) .badge-base {
+  min-height: 300px;
+}
+
+.linkedin-badge .badge-base iframe {
+  border-radius: var(--radius-sm);
+}
+
+/* The fallback link ships inside LinkedIn's own markup, so it is what
+   visitors get while the widget is in flight — or for good if it is
+   blocked. Dressed as a button so it never reads as a stray link. */
+.linkedin-badge .LI-simple-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  transition:
+    color var(--speed) var(--ease),
+    border-color var(--speed) var(--ease),
+    box-shadow var(--speed) var(--ease);
+}
+
+.linkedin-badge .LI-simple-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 24px rgba(109, 141, 255, 0.15);
+}
+
+/* Once the widget is up it carries the same link itself. */
+.linkedin-badge.is-loaded .LI-simple-link {
+  display: none;
+}
+
 /* ===================== FOOTER ===================== */
 .site-footer {
   border-top: 1px solid var(--border);
@@ -912,5 +988,11 @@ a.contact-line:hover {
   .footer-inner {
     justify-content: center;
     text-align: center;
+  }
+
+  /* Give the LinkedIn widget every pixel it can get on a phone, so
+     its fixed-width iframe fits without scrolling inside the card */
+  .linkedin-badge {
+    padding: 1.25rem 0.75rem;
   }
 }
